@@ -6,3 +6,17 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
+    @get('playerHand').on("ended", ->
+      console.log("Player Looses")
+      )
+    
+    @get('playerHand').on("stand", =>
+      console.log("Player stands")
+      @get("dealerHand").dealerPlay()
+      )
+
+    @get('dealerHand').on("ended", ->
+      console.log("Player Wins")
+      )
+
+
