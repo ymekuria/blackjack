@@ -1,6 +1,6 @@
 assert = chai.assert
 
-describe 'Hand', ->
+describe 'CardView', ->
   deck = null
   hand = null
 

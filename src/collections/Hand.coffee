@@ -4,6 +4,7 @@ class window.Hand extends Backbone.Collection
   
   initialize: (array, @deck, @isDealer) ->
     # a = @scoreSetter();
+    @turn = true
     @score = 0
 
 
@@ -14,9 +15,10 @@ class window.Hand extends Backbone.Collection
         @hit()
 
   hit: ->
-    @add(@deck.pop())
-    @scoreSetter()
-    @last()
+    if(@turn)
+      @add(@deck.pop())
+      @scoreSetter()
+      @last()
 
   scoreSetter: ->
 
@@ -61,5 +63,6 @@ class window.Hand extends Backbone.Collection
 
 
   stand: ->
-    @scoreSetter();
+    @turn = false
+    @scoreSetter()
     @trigger("stand")

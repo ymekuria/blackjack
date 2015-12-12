@@ -6,24 +6,25 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
-    @get('playerHand').on("lost", ->
-      console.log("Player Looses")
-      )
+    @get('playerHand').on("lost", @gameOver)
     
     @get('playerHand').on("stand", =>
-      console.log("stand")
       @get("dealerHand").dealerPlay()
       )
 
-    @get('dealerHand').on("lost", ->
-      console.log("Player Wins")
-      )
+    @get('dealerHand').on("lost", @gameOver)
 
-    @get('dealerHand').on("dealerDone", =>
-      playerScore = @get('playerHand').score
-      dealerScore = @get('dealerHand').score
-      console.log('dealerScore',dealerScore, 'playerScore',playerScore)
+    @get('dealerHand').on("dealerDone", @gameOver)
 
+  gameOver : =>
+    playerScore = @get('playerHand').score
+    dealerScore = @get('dealerHand').score
+    console.log('dealerScore',dealerScore, 'playerScore',playerScore)
+    if dealerScore > 21
+      console.log("Dealer Busts")
+    else if playerScore > 21
+      console.log("Player Busts")
+    else 
       if dealerScore > playerScore
         console.log('Dealer Wins!!!')
       else if (playerScore > dealerScore)
@@ -31,5 +32,7 @@ class window.App extends Backbone.Model
       else
         console.log("Push") 
       
-    )
+
+
+
  

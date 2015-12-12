@@ -1,6 +1,6 @@
 assert = chai.assert
 
-describe 'Hand', ->
+describe 'Deck collection', ->
   deck = null
   hand = null
 
@@ -14,7 +14,9 @@ describe 'Hand', ->
       assert.strictEqual deck.last(), hand.hit()
       assert.strictEqual deck.length, 49
   describe 'Deck', ->
-    it 'should have 52 cards'
+    it 'should have 52 cards', ->
+      deck = new Deck()
+      expect(deck.length).to.equal(52)
     it "should have unique values", ->
     collection = new Deck()
     test = true
@@ -28,6 +30,9 @@ describe 'Hand', ->
 
     expect(test).to.be.true 
 
-   it 'should have a dealPlayer'
-   it 'after calling dealPlayer it should have 2 fewer cards'
+    it 'should have a dealPlayer', ->
+      expect(deck.dealPlayer).to.not.equal(undefined)
+    it 'after calling dealPlayer it should have 2 fewer cards', ->
+      expect(deck.length).to.equal(50)
+
    

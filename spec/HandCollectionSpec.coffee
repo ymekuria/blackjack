@@ -1,8 +1,8 @@
 assert = chai.assert
 
-describe 'Hand', ->
+describe 'Hand Collection', ->
+  app = null
   deck = null
-  hand = null
   playerHand = null
   dealerHand = null
 
@@ -20,13 +20,25 @@ describe 'Hand', ->
       assert.strictEqual deck.length, 47
 
   describe 'stand', ->
-    it 'dealer should play' 
-    it 'player should stop playing'
+    it 'dealer should play', -> 
+      spy = sinon.spy(dealerHand, "dealerPlay")
+      playerHand.stand()
+      expect(spy.called).to.be.true
+
+    it 'player should stop playing', ->
+      spy = sinon.spy(playerHand, "add")
+      playerHand.stand()
+      playerHand.hit()
+      expect(spy.called).to.be.false
+
   describe 'scoreSetter', ->
     it 'should set the score upon initialzation'
     it 'should update after a hit'
   
-  describe 'dealerDone', ->
-    it 'should trigger dealerDone if score is between 17 and 21'
+  # describe 'dealerDone', ->
+  #   it 'should trigger dealerDone if score is between 17 and 21'
+  #   spy = sinon.spy(dealerHand, "trigger")
+  #   dealerHand.score = 18
+  #   dealerHand.scoreSetter
 
 
