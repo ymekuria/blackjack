@@ -1,15 +1,18 @@
 assert = chai.assert
 
 describe 'AppView', ->
-  deck = null
-  hand = null
+  appView = null 
 
   beforeEach ->
-    deck = new Deck()
-    hand = deck.dealPlayer()
+    #appView = new AppView(model: new App())
+    appView = new AppView(model: new App())
 
   describe 'AppView', ->
-   it 'clicks should trigger hit and stand'
-   it 'it should render on initialzation'
-   it 'should re-render on click events'
-   
+    it 'clicks should trigger hit and stand', ->
+
+    # it 'it should render on initialzation', ->
+    #   spy = sinon.spy(appView, "render")
+    #   appView.initialize()
+    #   expect(spy).to.be.called
+
+

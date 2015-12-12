@@ -1,13 +1,15 @@
 assert = chai.assert
 
 describe 'CardView', ->
-  deck = null
-  hand = null
+  cardView = null
+  cardMode = null
 
   beforeEach ->
-    deck = new Deck()
-    hand = deck.dealPlayer()
+    cardModel = new Card({})
+    cardView = new CardView({model:cardModel})
 
   describe 'CardView', ->
-   it 'it should render on initialzation'
-   
+    it 'it should render on initialzation', ->
+      spy = sinon.spy(cardView, "render")
+      cardView.initialize()
+      expect(spy).to.be.called
