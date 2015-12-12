@@ -6,9 +6,9 @@ class window.Hand extends Backbone.Collection
     # a = @scoreSetter();
     @score = 0
 
-    
 
   dealerPlay: ->
+    #reveal hand
     if @score < 17
       while @score < 17
         @hit()

@@ -26,9 +26,10 @@ class window.App extends Backbone.Model
 
       if dealerScore > playerScore
         console.log('Dealer Wins!!!')
-      else
+      else if (playerScore > dealerScore)
         console.log("Player Wins!!!")  
+      else
+        console.log("Push") 
       
     )
-
-
+ 

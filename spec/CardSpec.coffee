@@ -17,6 +17,10 @@ describe "deck constructor", ->
       if count > 1
         test = false
 
-    expect(test).to.be.true      
+    expect(test).to.be.true 
 
-    
+  it 'should have a value and a suite',
+  it 'should invoke flip on stand event',
+         
+
+
