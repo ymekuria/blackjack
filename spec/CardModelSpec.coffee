@@ -1,6 +1,6 @@
 assert = chai.assert
 
-describe "deck constructor", ->
+describe "card constructor", ->
 
   it "should create a card collection", ->
     collection = new Deck()
@@ -19,8 +19,9 @@ describe "deck constructor", ->
 
     expect(test).to.be.true 
 
-  it 'should have a value and a suite',
+  it 'should have a value and a suite', ->
+
   it 'should invoke flip on stand event',
-         
+
 
 
