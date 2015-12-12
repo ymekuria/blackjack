@@ -11,6 +11,7 @@
     <script src="lib/chai/chai.js"></script>
     <script>
       mocha.setup('bdd');
+      var expect = chai.expect;
       $(function() {
         window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
       })
@@ -28,7 +29,7 @@
 
     <!-- include spec files here... -->
     <script src="compiled/spec/CardSpec.js"></script>
-    <script src="compiled/spec/DeckSpec.js"></script>
+    <script src="compiled/spec/HandSpec.js"></script>
     <script src="compiled/spec/BlackjackViewSpec.js"></script>
 
     <!-- // <script src="compiled/spec/main.js"></script> -->
