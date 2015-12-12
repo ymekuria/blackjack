@@ -2,10 +2,11 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   
-  initialize: (array, @deck, @isDealer) ->
+  initialize: (@array, @deck, @isDealer) ->
     # a = @scoreSetter();
     @turn = true
-    @score = 0
+    @score = @array[0].get("value") + @array[1].get("value")
+    console.log(@array, "array", @score,"score", @minScore(),"minScore")
 
 
   dealerPlay: ->
@@ -16,6 +17,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     if(@turn)
+
       @add(@deck.pop())
       @scoreSetter()
       @last()
@@ -30,10 +32,9 @@ class window.Hand extends Backbone.Collection
 
     if @score
       if @score > 21 
-        @trigger("lost")
+        @trigger("gameOver")
       else if @isDealer and @score >= 17
-        console.log("trigger", @score)
-        @trigger("dealerDone")
+        @trigger("gameOver")
         
 
     # _.reduce(scores, function(minScore, maxScore) {

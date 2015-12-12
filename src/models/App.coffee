@@ -6,15 +6,14 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
-    @get('playerHand').on("lost", @gameOver)
     
     @get('playerHand').on("stand", =>
       @get("dealerHand").dealerPlay()
       )
 
-    @get('dealerHand').on("lost", @gameOver)
+    @get('playerHand').on("gameOver", @gameOver)
+    @get('dealerHand').on("gameOver", @gameOver)
 
-    @get('dealerHand').on("dealerDone", @gameOver)
 
   gameOver : =>
     playerScore = @get('playerHand').score
