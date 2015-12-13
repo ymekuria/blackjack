@@ -10,6 +10,8 @@ class window.App extends Backbone.Model
     @get('playerHand').on("stand", =>
       @get("dealerHand").dealerPlay()
       )
+    @get('playerHand').on("blackJack", @blackJack)
+    @get('dealerHand').on("blackJack", @blackJack)
 
     @get('playerHand').on("gameOver", @gameOver)
     @get('dealerHand').on("gameOver", @gameOver)
@@ -31,7 +33,8 @@ class window.App extends Backbone.Model
       else
         console.log("Push") 
       
-
+  blackJack : ->
+    console.log("blackJack")
 
 
  

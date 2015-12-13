@@ -6,11 +6,12 @@ class window.Hand extends Backbone.Collection
     # a = @scoreSetter();
     @turn = true
     @score = @array[0].get("value") + @array[1].get("value")
-    console.log(@array, "array", @score,"score", @minScore(),"minScore")
+    if @score == 21
+      @trigger("blackjack")
 
 
   dealerPlay: ->
-    #reveal hand
+    @array[0].flip()
     if @score < 17
       while @score < 17
         @hit()
@@ -36,14 +37,6 @@ class window.Hand extends Backbone.Collection
       else if @isDealer and @score >= 17
         @trigger("gameOver")
         
-
-    # _.reduce(scores, function(minScore, maxScore) {
-    #   if( maxScore > 21 ) {
-    #     return minScore;
-    #   } else{
-    #     return maxScore;
-    #   }
-    # });
 
 
   hasAce: -> @reduce (memo, card) ->
